@@ -1,11 +1,17 @@
 import sys
 import os
 
-# Add BioSeqAligner to the path
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'BioSeqAligner'))
+# Get absolute paths
+root_dir = os.path.abspath(os.path.dirname(__file__))
+bioaligner_dir = os.path.join(root_dir, 'BioSeqAligner')
+backend_dir = os.path.join(bioaligner_dir, 'backend')
+
+# Add both directories to path
+sys.path.insert(0, bioaligner_dir)
+sys.path.insert(0, backend_dir)
 
 # Import the Flask app
-from backend.app import app
+from app import app
 
 if __name__ == '__main__':
     app.run()
